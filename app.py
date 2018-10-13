@@ -10,6 +10,6 @@ for new_data in gps_socket:
         data_stream.unpack(new_data)
         # print("Latitude = {lat}".format(lat=data_stream.TPV['lat']),
         #       "Longitude = {lon}".format(lon=data_stream.TPV['lon']))
-        loggers.gps_data.info("Latitude = {lat}".format(lat=data_stream.TPV['lat']),
-              "Longitude = {lon}".format(lon=data_stream.TPV['lon']))
+        print(type(data_stream.TPV["lat"]))
+        loggers.gps_data.info("Latitude = {lat}".format(lat=data_stream.TPV["lat"]))
 
