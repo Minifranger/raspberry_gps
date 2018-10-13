@@ -1,8 +1,8 @@
 import logging.handlers
 
 MODE = "a"
-MAX_BYTES = 2 * 1024 * 1024
-BACKUP = 1
+MAX_BYTES = 200 * 1024 * 1024
+BACKUP = 12
 
 formatter = logging.Formatter("%(asctime)s %(levelname)-8s %(message)s")
 
