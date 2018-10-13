@@ -1,3 +1,4 @@
+#!/usr/local/bin/python
 from gps3 import gps3
 import loggers
 
