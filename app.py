@@ -8,6 +8,6 @@ gps_socket.watch()
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
-        if type(data_stream.TPV["lat"]) is not str or type(data_stream.TPV["lon"]) is not str:
-            loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat=data_stream.TPV["lat"][:8],
-                                                                               lon=data_stream.TPV["lon"][:8]))
+        if type(data_stream.TPV["lat"]) is float and type(data_stream.TPV["lon"]) is float:
+            loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat="%.8f" % (data_stream.TPV["lat"]),
+                                                                               lon="%.8f" % (data_stream.TPV["lon"])))
