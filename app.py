@@ -8,8 +8,5 @@ gps_socket.watch()
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
-        # print("Latitude = {lat}".format(lat=data_stream.TPV['lat']),
-        #       "Longitude = {lon}".format(lon=data_stream.TPV['lon']))
-        print(type(data_stream.TPV["lat"]))
-        loggers.gps_data.info("Latitude = {lat}".format(lat=data_stream.TPV["lat"]))
-
+        loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat=data_stream.TPV["lat"],
+                                                                           lon=data_stream.TPV["lon"]))
