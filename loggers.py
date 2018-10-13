@@ -6,7 +6,7 @@ BACKUP = 1
 
 formatter = logging.Formatter("%(asctime)s %(levelname)-8s %(message)s")
 
-handler = logging.handlers.RotatingFileHandler("logs/gps_data.log", mode=MODE, maxBytes=MAX_BYTES, backupCount=BACKUP)
+handler = logging.handlers.RotatingFileHandler("gps_data.log", mode=MODE, maxBytes=MAX_BYTES, backupCount=BACKUP)
 handler.setFormatter(formatter)
 
 gps_data = logging.getLogger("gps_data")
