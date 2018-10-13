@@ -9,6 +9,6 @@ for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print(type(data_stream.TPV["lat"]))
-        if data_stream.TPV["lat"] == "n/a" or data_stream.TPV["lon"] == "n/a"
+        if data_stream.TPV["lat"] == "n/a" or data_stream.TPV["lon"] == "n/a":
         loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat=data_stream.TPV["lat"][:8],
                                                                            lon=data_stream.TPV["lon"][:8]))
