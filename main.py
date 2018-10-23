@@ -18,6 +18,8 @@ for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
         print(data_stream.TPV)
+        print(data_stream.SKY)
+        print(data_stream.GST)
         if type(data_stream.TPV["lat"]) is float and type(data_stream.TPV["lon"]) is float:
             c.execute(""" INSERT INTO gps_data(date, lat, lon) VALUES (?, ?, ?); """, (data_stream.TPV["time"],
                                                                                        "%.8f" % (data_stream.TPV["lat"]),
