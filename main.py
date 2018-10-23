@@ -1,5 +1,5 @@
 #!/usr/bin/python3.5
-from gps3 import gps3
+import gps
 import loggers
 import sqlite3
 import properties
@@ -9,10 +9,11 @@ c = conn.cursor()
 
 c.execute(""" CREATE TABLE if not exists gps_data (date text, lat float, lon float) """)
 
-gps_socket = gps3.GPSDSocket()
-data_stream = gps3.DataStream()
-gps_socket.connect()
-gps_socket.watch()
+# gps_socket = gps3.GPSDSocket()
+# data_stream = gps3.DataStream()
+# gps_socket.connect()
+# gps_socket.watch()
+gps_socket, data_stream = gps.start_stream()
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
