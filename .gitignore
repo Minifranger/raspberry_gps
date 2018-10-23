@@ -1,5 +1,6 @@
 # Protect gps data
 */gps_data.log
+*/gps_data.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
