@@ -1,30 +1,18 @@
 #!/usr/bin/python3.5
 import gps
 import loggers
-import sqlite3
+import db
 import properties
 
-conn = sqlite3.connect(properties.GPS_DB)
-c = conn.cursor()
+conn, c = db.start_db(name=properties.GPS_DB)
 
-c.execute(""" CREATE TABLE if not exists gps_data (date text, lat float, lon float) """)
-
-# gps_socket = gps3.GPSDSocket()
-# data_stream = gps3.DataStream()
-# gps_socket.connect()
-# gps_socket.watch()
 gps_socket, data_stream = gps.start_stream()
 for new_data in gps_socket:
     if new_data:
         data_stream.unpack(new_data)
-        print(data_stream.TPV)
-        print(data_stream.SKY)
-        print(data_stream.GST)
-        if type(data_stream.TPV["lat"]) is float and type(data_stream.TPV["lon"]) is float:
-            c.execute(""" INSERT INTO gps_data(date, lat, lon) VALUES (?, ?, ?); """, (data_stream.TPV["time"],
-                                                                                       "%.8f" % (data_stream.TPV["lat"]),
-                                                                                       "%.8f" % (data_stream.TPV["lon"])))
+        time, lat, lon = data_stream.TPV["time"], data_stream.TPV["lat"], data_stream.TPV["lon"]
+        if gps.check_data(lat=lat, lon=lon):
+            c.execute(""" INSERT INTO gps_data(date, lat, lon) VALUES (?, ?, ?); """, (time, lat, lon))
             conn.commit()
-            loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat="%.8f" % (data_stream.TPV["lat"]),
-                                                                               lon="%.8f" % (data_stream.TPV["lon"])))
+            loggers.gps_data.info("Latitude = {lat}, Longitude = {lon}".format(lat=lat, lon=lon))
 conn.close()

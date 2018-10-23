@@ -7,3 +7,7 @@ def start_stream():
     gps_socket.connect()
     gps_socket.watch()
     return gps_socket, data_stream
+
+
+def check_data(lat, lon):
+    return isinstance(lat, float) and isinstance(lon, float)
