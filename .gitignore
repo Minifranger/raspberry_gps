@@ -1,6 +1,6 @@
-# Protect gps data
-*/gps_data.log
-*/gps_data.db
+# Protect data
+db/
+log/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -115,3 +115,6 @@ dmypy.json
 
 #idea
 .idea
+
+#raspberry install
+raspberry.txt
