@@ -5,6 +5,8 @@ from gps3 import gps3
 import properties
 import db
 import sensor
+from socket_gps import sio
+
 
 gps_db = db.MetaDatabase(name=properties.GPS_DB)
 gps_table = db.MetaTable(name="gps_table", schema="date text, lat float, lon float")
@@ -20,6 +22,7 @@ for new_data in gps_sensor.socket:
     if new_data:
         gps_sensor.stream.unpack(new_data)
         print(new_data)
+        sio.emit("new_data", new_data)
 #         time, lat, lon = data_stream.TPV["time"], data_stream.TPV["lat"], data_stream.TPV["lon"]
 #         if gps.check_data(lat=lat, lon=lon):
 #             c.execute(""" INSERT INTO gps_data(date, lat, lon) VALUES (?, ?, ?); """, (time, lat, lon))

@@ -1,29 +1,24 @@
 import socketio
 from time import sleep
 
+
 sio = socketio.Client()
 
 
 @sio.event
 def connect():
-    print('connection established')
-
-
-@sio.event
-def my_message(data):
-    print('message received with ', data)
-    sio.emit('newnumber', {'response': 'my response'})
+    print("Connection established")
 
 
 @sio.event
 def disconnect():
-    print('disconnected from server')
+    print("Disconnected from server")
+
 
 sio.connect('http://localhost:5000')
-print("trying to sent response")
-while True:
-
-    sio.emit('newnumber', {'number': 1})
-    sleep(2)
-    print("sent my response")
+# new_data = {"lat": 1, "lon": 5}
+# while True:
+#     sio.emit("new_data", new_data)
+#     print("sent {new_data}".format(new_data=new_data))
+#     sleep(2)
 # sio.disconnect()
