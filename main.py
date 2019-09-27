@@ -20,4 +20,4 @@ for new_data in gps_sensor.socket:
         gps_sensor.stream.unpack(new_data)
         time, lat, lon = gps_sensor.stream.TPV["time"], gps_sensor.stream.TPV["lat"], gps_sensor.stream.TPV["lon"]
         print("lat = {lat} - lon = {lon}".format(lat=lat, lon=lon))
-        sio.emit("new_data", gps_sensor.stream.TPV)
+        sio.emit("gps", gps_sensor.stream.TPV)

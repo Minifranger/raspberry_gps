@@ -28,6 +28,7 @@ class MetaDatabase(object):
         self.execute("CREATE TABLE if not exists {name} ({schema})".format(name=table.name, schema=table.schema))
 
     def delete_table(self, table):
+        loggers.logger.info("Deleting sql table {name}".format(name=table.name))
         self.execute("DROP TABLE {name}".format(name=table.name))
 
     def list_tables(self):

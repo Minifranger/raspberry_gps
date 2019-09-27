@@ -1,3 +1,6 @@
+import loggers
+
+
 class Sensor(object):
 
     def __init__(self, socket, stream):
@@ -5,6 +8,7 @@ class Sensor(object):
         self.stream = stream
 
     def connect(self):
+        loggers.logger.info("Connecting sensor {self}".format(self=self))
         self.socket.connect()
         self.socket.watch()
 
