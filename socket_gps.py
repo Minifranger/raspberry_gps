@@ -15,10 +15,9 @@ def disconnect():
     print("Disconnected from server")
 
 
-sio.connect('http://localhost:5000')
-# new_data = {"lat": 1, "lon": 5}
+# sio.connect('http://localhost:5000')
+# gps_data = {"lat": 43.614992457, "lon": 1.39491507}
 # while True:
-#     sio.emit("new_data", new_data)
-#     print("sent {new_data}".format(new_data=new_data))
-#     sleep(2)
+#     sio.emit("gps", gps_data)
+#     sleep(1)
 # sio.disconnect()
