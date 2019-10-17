@@ -17,6 +17,6 @@ def disconnect():
 
 # gps_data = {"lat": 43.614992457, "lon": 1.39491507}
 # while True:
-#     sio.emit("gps", gps_data)
+#     sio.emit("dbs", gps_data)
 #     sleep(1)
 # sio.disconnect()

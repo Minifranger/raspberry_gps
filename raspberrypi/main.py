@@ -1,13 +1,12 @@
 #!/usr/bin/python3.5
-import loggers
 from gps3 import gps3
 import properties
-import db
-import sensor
-from socket_gps import sio
+from db import db
+from sensor import sensor
+# from socket_gps import sio
 
 
-gps_db = db.MetaDatabase(name=properties.GPS_DB)
+gps_db = db.MetaDatabase(path=properties.GPS_DB)
 gps_table = db.MetaTable(name="gps_table", schema="date text, lat float, lon float")
 gps_db.create_table(gps_table)
 print(gps_db.list_tables())
@@ -21,4 +20,4 @@ for new_data in gps_sensor.socket:
         time, lat, lon = gps_sensor.stream.TPV["time"], gps_sensor.stream.TPV["lat"], gps_sensor.stream.TPV["lon"]
         if sensor.check_data(lat, lon):
             print("lat = {lat} - lon = {lon}".format(lat=lat, lon=lon))
-            sio.emit("gps", gps_sensor.stream.TPV)
+            sio.emit("dbs", gps_sensor.stream.TPV)

@@ -1,4 +1,4 @@
-import loggers
+from log import loggers
 
 
 class Sensor(object):

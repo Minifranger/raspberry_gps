@@ -1,6 +1,5 @@
 # Protect data
-db/
-log/
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
