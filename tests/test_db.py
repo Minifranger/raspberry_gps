@@ -30,7 +30,3 @@ class TestDB(unittest.TestCase):
         test_db.create_table(test_table)
         test_db.delete_table(test_table)
         self.assertFalse(self.table_name in [table for (table, ) in test_db.list_tables()])
-
-
-if __name__ == '__main__':
-    unittest.main()

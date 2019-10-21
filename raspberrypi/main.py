@@ -3,7 +3,7 @@ from gps3 import gps3
 import properties
 from db import db
 from sensor import sensor
-# from socket_gps import sio
+from socket_gps import sio
 
 
 gps_db = db.MetaDatabase(path=properties.GPS_DB)
